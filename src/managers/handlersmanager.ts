@@ -1,4 +1,3 @@
-import type { TrollboxClient } from '../client.js';
 import { Context } from '../handlers/context.js';
 import type { Handler } from '../handlers/handler.js';
 
