@@ -24,6 +24,10 @@
   "module": "lib/src/index.mjs",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.js",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/dachaos-group/trollboxlib.git"
+  },
   "files": [
     "lib",
     "LICENSE",
