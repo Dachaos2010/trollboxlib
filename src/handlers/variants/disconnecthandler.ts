@@ -5,8 +5,6 @@ import type { DisconnectContext } from '../../context/variants/disconnectcontext
 /**
  * Represents a disconnect handler. Called when client disconnects.
  * 
- * Context: `client`
- * 
  * @class
  */
 export class DisconnectHandler implements Handler<DisconnectContext> {

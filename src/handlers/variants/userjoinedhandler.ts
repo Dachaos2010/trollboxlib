@@ -5,8 +5,6 @@ import type { UserJoinedContext } from '../../context/variants/userjoinedcontext
 /**
  * Represents a user joined handler. Called when someone joins Trollbox.
  * 
- * Context: `client` `user`
- * 
  * @class
  */
 export class UserJoinedHandler implements Handler<UserJoinedContext> {

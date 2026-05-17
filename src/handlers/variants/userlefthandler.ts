@@ -5,8 +5,6 @@ import type { UserLeftContext } from '../../context/variants/userleftcontext.js'
 /**
  * Represents a user left handler. Called when someone quits Trollbox.
  * 
- * Context: `client` `user`
- * 
  * @class
  */
 export class UserLeftHandler implements Handler<UserLeftContext> {

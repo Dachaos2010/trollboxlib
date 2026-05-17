@@ -5,8 +5,6 @@ import type { ConnectContext } from '../../context/variants/connectcontext.js';
 /**
  * Represents a connect handler. Called when client connects.
  * 
- * Context: `client`
- * 
  * @class
  */
 export class ConnectHandler implements Handler<ConnectContext> {

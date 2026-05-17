@@ -5,8 +5,6 @@ import type { UserNickChangeContext } from '../../context/variants/usernickchang
 /**
  * Represents a user nick change handler. Called when someone changes a nickname.
  * 
- * Context: `client` `user_nick_change`
- * 
  * @class
  */
 export class UserNickChangeHandler implements Handler<UserNickChangeContext> {

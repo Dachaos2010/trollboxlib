@@ -5,8 +5,6 @@ import type { MessageContext } from '../../context/variants/messagecontext.js';
 /**
  * Represents a message handler. Called when someone sends a message.
  * 
- * Context: `client` `message`
- * 
  * @class
  */
 export class MessageHandler implements Handler<MessageContext> {
