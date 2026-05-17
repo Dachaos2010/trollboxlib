@@ -63,6 +63,6 @@ export class SocketUser {
         if (this.client.socket.disconnected) throw new NotConnectedError('Client is not connected');
         if (!this.client.joined) throw new NotJoinedError('Client have not joined');
 
-        return this.client.socket.id == this.client.users_manager.socket_id_by_user(this)
+        return this.client.users_manager.king == this
     }
 }
