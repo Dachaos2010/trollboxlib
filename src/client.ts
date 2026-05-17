@@ -302,7 +302,7 @@ export class TrollboxClient {
      * join('amogus', 'orange')
      * 
      * @example
-     * // join trollbox with 'sus' pseudo and random color
+     * // join trollbox with 'sus' pseudo
      * join('sus')
      */
     join(pseudo: string, color?: string) {
@@ -312,6 +312,38 @@ export class TrollboxClient {
         this.joined = true;
         this.pseudo = pseudo;
         this.color = color ?? this.color;
+    }
+    
+    /**
+     * Set pseudo of your client. **Can be called only after `join()`!**
+     * 
+     * @param {string} pseudo Pseudo (aka. nickname) of your client.
+     * 
+     * @throws {NotConnectedError} If the client is not connected to the Trollbox.
+     * @throws {NotJoinedError} If the client have not joined the Trollbox.
+     */
+    set_pseudo(pseudo: string) {
+        if (!this.is_connected()) throw new NotConnectedError('Client is not connected');
+        if (!this.is_joined()) throw new NotJoinedError('Client have not joined');
+
+        this.socket?.emit('user joined', pseudo, this.color, '', '');
+        this.pseudo = pseudo;
+    }
+
+    /**
+     * Set color of your client. **Can be called only after `join()`!**
+     * 
+     * @param {string} color Color of the pseudo. Can be a named-color from CSS (`white`) or hex (`#FFFFFF`).
+     * 
+     * @throws {NotConnectedError} If the client is not connected to the Trollbox.
+     * @throws {NotJoinedError} If the client have not joined the Trollbox.
+     */
+    set_color(color: string) {
+        if (!this.is_connected()) throw new NotConnectedError('Client is not connected');
+        if (!this.is_joined()) throw new NotJoinedError('Client have not joined');
+
+        this.socket?.emit('user joined', this.pseudo, color, '', '');
+        this.color = color;
     }
 
     /**
