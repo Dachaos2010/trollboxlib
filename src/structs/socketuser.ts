@@ -42,7 +42,7 @@ export class SocketUser {
     is_me(): boolean {
         if (!this.client.socket) return false;
 
-        return this.client.users_manager.get_me()?.is(this) ?? false;
+        return this.client.users_manager.users[this.client.socket.id] == this;
     }
 
     /**
