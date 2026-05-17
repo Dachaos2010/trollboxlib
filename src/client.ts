@@ -286,31 +286,32 @@ export class TrollboxClient {
         this.joined = false;
     }
 
+    join(pseudo: string): void;
+    join(pseudo: string, color: string): void;
+
     /**
      * Join Trollbox. Calling this function again (without disconnecting) will change your pseudo and color.
      * 
      * @param {string} pseudo Pseudo (aka. nickname) of your client.
-     * @param {string} color Color of the pseudo. Can be a named-color from CSS (`white`) or hex (`#FFFFFF`). Random color will be chosen if string is empty.
-     * @param {string} style CSS style of pseudo. Undocumented. Practically does nothing and never used in Windows93's Trollbox client.
-     * @param {string} pass Password (?). Undocumented. Practically does nothing and never used in Windows93's Trollbox client.
+     * @param {string?} color Color of the pseudo. Can be a named-color from CSS (`white`) or hex (`#FFFFFF`). Color will not change (or will be set to `white` on first call) if empty.
      * 
      * @throws {NotConnectedError} If the client is not connected to the Trollbox.
      * 
      * @example
      * // join trollbox with 'amogus' pseudo and orange color
-     * join('amogus', 'orange', '', '')
+     * join('amogus', 'orange')
      * 
      * @example
      * // join trollbox with 'sus' pseudo and random color
-     * join('sus', '', '', '')
+     * join('sus')
      */
-    join(pseudo: string, color: string, style: string, pass: string) {
+    join(pseudo: string, color?: string) {
         if (!this.is_connected()) throw new NotConnectedError('Client is not connected');
 
-        this.socket?.emit('user joined', pseudo, color, style, pass);
+        this.socket?.emit('user joined', pseudo, color ?? this.color, '', '');
         this.joined = true;
         this.pseudo = pseudo;
-        this.color = color;
+        this.color = color ?? this.color;
     }
 
     /**
