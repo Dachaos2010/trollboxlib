@@ -42,7 +42,7 @@ all donations are appreciated. thank you for supporting the project!
 
 this is an example of library usage. it creates a logger bot that prints all messages and events to console.
 
-```
+```typescript
 import {
     TrollboxClient,
     Context,
