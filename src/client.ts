@@ -6,7 +6,6 @@ import { NotConnectedError } from './errors/notconnected.js';
 import { NotJoinedError } from './errors/notjoined.js';
 import { SocketMessage } from './structs/socketmessage.js';
 import { SocketUser } from './structs/socketuser.js';
-import { Context } from './handlers/context.js';
 import { SocketMessageSchema } from './schemas/socketmessage.js';
 import { SocketUserJoinedSchema } from './schemas/socketuserjoined.js';
 import { SocketUpdatedUserSchema } from './schemas/socketupdateduser.js';
@@ -16,6 +15,12 @@ import { SocketUserNickChangeSchema } from './schemas/socketusernickchange.js';
 import { SocketUserNickChange } from './structs/socketusernickchange.js';
 import { HandlersManager } from './managers/handlersmanager.js';
 import { SocketNick } from './structs/socketnick.js';
+import { MessageContext } from './context/variants/messagecontext.js';
+import { UserJoinedContext } from './context/variants/userjoinedcontext.js';
+import { UserLeftContext } from './context/variants/userleftcontext.js';
+import { UserNickChangeContext } from './context/variants/usernickchangecontext.js';
+import { ConnectContext } from './context/variants/connectcontext.js';
+import { DisconnectContext } from './context/variants/disconnectcontext.js';
 
 const TROLLBOX_ENDPOINT = 'https://v2.windows93.net:8088';
 
@@ -128,9 +133,7 @@ export class TrollboxClient {
 
                 await this.handlers_manager.call(
                     'MessageHandler',
-                    new Context()
-                        .with_client(this)
-                        .with_message(struct)
+                    new MessageContext(this, struct)
                 );
             }
         });
@@ -152,9 +155,7 @@ export class TrollboxClient {
 
                 await this.handlers_manager.call(
                     'UserJoinedHandler',
-                    new Context()
-                        .with_client(this)
-                                .with_user(struct)
+                    new UserJoinedContext(this, struct)
                 );
             }
         });
@@ -176,9 +177,7 @@ export class TrollboxClient {
 
                 await this.handlers_manager.call(
                     'UserLeftHandler',
-                    new Context()
-                        .with_client(this)
-                        .with_user(struct)
+                    new UserLeftContext(this, struct)
                 );
             }
         });
@@ -213,9 +212,7 @@ export class TrollboxClient {
 
                 await this.handlers_manager.call(
                     'UserNickChangeHandler',
-                    new Context()
-                        .with_client(this)
-                        .with_user_nick_change(struct)
+                    new UserNickChangeContext(this, struct)
                 );
             }
         });
@@ -250,8 +247,7 @@ export class TrollboxClient {
         this.socket.on('connect', async () => {
             await this.handlers_manager.call(
                 'ConnectHandler',
-                new Context()
-                    .with_client(this)
+                new ConnectContext(this)
             );
         });
 
@@ -260,8 +256,7 @@ export class TrollboxClient {
 
             await this.handlers_manager.call(
                 'DisconnectHandler',
-                new Context()
-                    .with_client(this)
+                new DisconnectContext(this)
             );
         });
     }

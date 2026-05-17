@@ -1,4 +1,4 @@
-import { Context } from '../handlers/context.js';
+import { Context } from '../context/context.js';
 import type { Handler } from '../handlers/handler.js';
 
 /**
@@ -8,9 +8,9 @@ export class HandlersManager {
     /**
      * Array of handlers.
      * 
-     * @type {Handler[]}
+     * @type {Handler<Context>[]}
      */
-    handlers: Handler[] = [];
+    handlers: Handler<Context>[] = [];
 
     constructor() {}
 
@@ -19,7 +19,7 @@ export class HandlersManager {
      * 
      * @param {Handler} handler Handler to register.
      */
-    register_handler(handler: Handler) {
+    register_handler(handler: Handler<Context>) {
         this.handlers.push(handler);
     }
 
@@ -30,7 +30,7 @@ export class HandlersManager {
      * @param {Context} context Execution context.
      */
     async call(name: string, context: Context) {
-        this.handlers.forEach(async (handler: Handler) => {
+        this.handlers.forEach(async (handler: Handler<Context>) => {
             if (handler.name == name) await handler.callback(context);
         });
     }

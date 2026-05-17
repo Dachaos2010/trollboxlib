@@ -1,5 +1,6 @@
 import type { Handler } from '../handler.js';
 import type { Callback } from '../callback.js';
+import type { UserNickChangeContext } from '../../context/variants/usernickchangecontext.js';
 
 /**
  * Represents a user nick change handler. Called when someone changes a nickname.
@@ -8,17 +9,17 @@ import type { Callback } from '../callback.js';
  * 
  * @class
  */
-export class UserNickChangeHandler implements Handler {
+export class UserNickChangeHandler implements Handler<UserNickChangeContext> {
     name = 'UserNickChangeHandler';
     
-    callback: Callback;
+    callback: Callback<UserNickChangeContext>;
     
     /**
      * Create a user nick change instance.
      * 
      * @param {Callback} callback Callback function.
      */
-    constructor(callback: Callback) {
+    constructor(callback: Callback<UserNickChangeContext>) {
         this.callback = callback;
     }
 }

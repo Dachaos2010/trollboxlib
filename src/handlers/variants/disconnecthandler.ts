@@ -1,5 +1,6 @@
 import type { Handler } from '../handler.js';
 import type { Callback } from '../callback.js';
+import type { DisconnectContext } from '../../context/variants/disconnectcontext.js';
 
 /**
  * Represents a disconnect handler. Called when client disconnects.
@@ -8,17 +9,17 @@ import type { Callback } from '../callback.js';
  * 
  * @class
  */
-export class DisconnectHandler implements Handler {
+export class DisconnectHandler implements Handler<DisconnectContext> {
     name = 'DisconnectHandler';
     
-    callback: Callback;
+    callback: Callback<DisconnectContext>;
     
     /**
      * Create a disconnect handler instance.
      * 
-     * @param {Callback} callback Callback function.
+     * @param {Callback<DisconnectContext>} callback Callback function.
      */
-    constructor(callback: Callback) {
+    constructor(callback: Callback<DisconnectContext>) {
         this.callback = callback;
     }
 }

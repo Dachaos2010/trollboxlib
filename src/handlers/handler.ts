@@ -1,4 +1,4 @@
-import type { Context } from './context.js';
+import type { Context } from '../context/context.js';
 import type { Callback } from './callback.js';
 
 /**
@@ -6,7 +6,7 @@ import type { Callback } from './callback.js';
  * 
  * @class
  */
-export interface Handler {
+export interface Handler<T extends Context> {
     /**
      * A name of the handler to differ them.
      * 
@@ -17,7 +17,7 @@ export interface Handler {
     /**
      * A callback function.
      * 
-     * @type {Callback}
+     * @type {Callback<T>}
      */
-    callback: Callback
+    callback: Callback<T>
 }
