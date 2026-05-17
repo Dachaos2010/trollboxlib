@@ -6,7 +6,7 @@ import type { TrollboxClient } from '../client.js';
  * @class
  */
 export class Context {
-    client: TrollboxClient | null = null;
+    client: TrollboxClient;
 
     /**
      * Creates a new instance.
