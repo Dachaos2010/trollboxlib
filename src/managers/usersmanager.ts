@@ -33,6 +33,8 @@ export class UsersManager {
     /**
      * Get users by theirs home.
      * 
+     * If users share the same home it means that they are the same people.
+     * 
      * @param {string} home Home.
      * @returns {SocketUser[]}
      */
