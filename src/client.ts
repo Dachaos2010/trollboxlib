@@ -99,9 +99,8 @@ export class TrollboxClient {
      */
     is_joined(): boolean {
         if (!this.is_connected()) return false;
-        if (this.joined) return false;
 
-        return true;
+        return this.joined;
     }
 
     /**
