@@ -107,7 +107,7 @@ export class TrollboxClient {
      * Connect to the Trollbox server with pseudo and color.
      * 
      * @param {string} pseudo Pseudo (aka. nickname) of your client.
-     * @param {string?} color Color of the pseudo. Can be a named-color from CSS (`white`) or hex (`#FFFFFF`).
+     * @param {string} color Color of the pseudo. Can be a named-color from CSS (`white`) or hex (`#FFFFFF`).
      * 
      * @throws {AlreadyConnectedError} If the client is already connected to the server.
      */
