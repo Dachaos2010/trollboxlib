@@ -15,7 +15,7 @@ export class DisconnectHandler implements Handler {
     /**
      * Create a disconnect handler instance.
      * 
-     * @param callback Callback function.
+     * @param {Callback} callback Callback function.
      */
     constructor(callback: Callback) {
         this.callback = callback;

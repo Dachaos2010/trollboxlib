@@ -15,7 +15,7 @@ export class ConnectHandler implements Handler {
     /**
      * Create a connects handler instance.
      * 
-     * @param callback Callback function.
+     * @param {Callback} callback Callback function.
      */
     constructor(callback: Callback) {
         this.callback = callback;
