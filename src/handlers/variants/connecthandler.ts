@@ -1,4 +1,5 @@
-import type { Callback, Handler } from '../handler.js';
+import type { Handler } from '../handler.js';
+import type { Callback } from '../callback.js';
 
 /**
  * Represents a connect handler. Called when client connects.

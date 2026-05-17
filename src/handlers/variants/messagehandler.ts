@@ -1,4 +1,5 @@
-import type { Callback, Handler } from '../handler.js';
+import type { Handler } from '../handler.js';
+import type { Callback } from '../callback.js';
 
 /**
  * Represents a message handler. Called when someone sends a message.

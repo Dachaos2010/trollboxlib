@@ -1,9 +1,5 @@
 import type { Context } from './context.js';
-
-/**
- * Represents a callback function type.
- */
-export type Callback = (context: Context) => Promise<void>;
+import type { Callback } from './callback.js';
 
 /**
  * Represents a base handler.

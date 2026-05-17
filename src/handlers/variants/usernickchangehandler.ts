@@ -1,4 +1,5 @@
-import type { Callback, Handler } from '../handler.js';
+import type { Handler } from '../handler.js';
+import type { Callback } from '../callback.js';
 
 /**
  * Represents a user nick change handler. Called when someone changes a nickname.
