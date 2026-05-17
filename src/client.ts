@@ -308,9 +308,7 @@ export class TrollboxClient {
     join(pseudo: string, color: string, style: string, pass: string) {
         if (!this.is_connected()) throw new NotConnectedError('Client is not connected');
 
-        this.socket?.emit('user joined', pseudo, color, style, pass, () => {
-            console.log("hi");
-        });
+        this.socket?.emit('user joined', pseudo, color, style, pass);
         this.joined = true;
         this.pseudo = pseudo;
         this.color = color;
