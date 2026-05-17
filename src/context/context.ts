@@ -6,6 +6,9 @@ import type { TrollboxClient } from '../client.js';
  * @class
  */
 export class Context {
+    /**
+     * Trollbox client.
+     */
     client: TrollboxClient;
 
     /**

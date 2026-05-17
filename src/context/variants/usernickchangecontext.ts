@@ -8,6 +8,9 @@ import { Context } from '../context.js';
  * @class
  */
 export class UserNickChangeContext extends Context {
+    /**
+     * User nick change.
+     */
     user_nick_change: SocketUserNickChange;
 
     /**

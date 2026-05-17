@@ -8,6 +8,9 @@ import { Context } from '../context.js';
  * @class
  */
 export class MessageContext extends Context {
+    /**
+     * Recieved message.
+     */
     message: SocketMessage;
 
     /**

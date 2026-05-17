@@ -8,6 +8,9 @@ import { Context } from '../context.js';
  * @class
  */
 export class UserLeftContext extends Context {
+    /**
+     * User left.
+     */
     user: SocketUser;
 
     /**
