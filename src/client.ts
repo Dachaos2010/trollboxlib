@@ -59,6 +59,20 @@ export class TrollboxClient {
     handlers_manager: HandlersManager = new HandlersManager();
 
     /**
+     * Your pseudo,
+     * 
+     * @type {string}
+     */
+    pseudo: string = 'anonymous';
+
+    /**
+     * Your color.
+     * 
+     * @type {string}
+     */
+    color: string = 'white';
+
+    /**
      * Creates a Trollbox client instance.
      */
     constructor() {
@@ -298,6 +312,8 @@ export class TrollboxClient {
             console.log("hi");
         });
         this.joined = true;
+        this.pseudo = pseudo;
+        this.color = color;
     }
 
     /**
