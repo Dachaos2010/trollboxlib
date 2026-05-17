@@ -40,7 +40,9 @@ export class SocketUser {
      * @returns {boolean}
      */
     is_me(): boolean {
-        return this.client.socket?.id == this.client.users_manager.socket_id_by_user(this)
+        if (!this.client.socket) return false;
+
+        return this.client.users_manager.socket_id_by_user(this) == this.client.socket?.id
     }
 
     /**
@@ -49,6 +51,8 @@ export class SocketUser {
      * @returns {boolean}
      */
     is_king(): boolean {
-        return this.client.users_manager.king == this
+        if (!this.client.users_manager.king) return false;
+
+        return this.client.users_manager.socket_id_by_user(this.client.users_manager.king) == this.client.socket?.id
     }
 }

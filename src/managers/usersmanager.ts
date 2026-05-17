@@ -55,21 +55,17 @@ export class UsersManager {
      * @returns {SocketUser | null}
      */
     by_socket_id(socket_id: string): SocketUser | null {
-        const found_socket = Object.keys(this.users).find((x) => x == socket_id);
-
-        if (!found_socket) return null;
-
-        return this.users[found_socket] ?? null;
+        return this.users[socket_id] ?? null;
     }
 
     /**
-     * Get socket ID by user.
+     * Get socket ID by user. It compares users by their homes, so it can return incorrect socket ID.
      * 
-     * @param {SocketUser} user User id.
+     * @param {SocketUser} user User.
      * @returns {string | null}
      */
     socket_id_by_user(user: SocketUser): string | null {
-        return Object.keys(this.users).find((x) => this.by_socket_id(x) == user) ?? null;
+        return Object.keys(this.users).find((x) => this.by_socket_id(x)?.home == user.home) ?? null;
     }
 
     /**
