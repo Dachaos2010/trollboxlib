@@ -96,7 +96,7 @@ export class TrollboxClient {
      * @throws {AlreadyConnectedError} If the client is already connected to the server.
      */
     connect() {
-        if (this.socket) throw new AlreadyConnectedError('Client is already connected');
+        if (this.is_connected()) throw new AlreadyConnectedError('Client is already connected');
 
         this.socket = io.default(TROLLBOX_ENDPOINT, {
             forceNew: true,
@@ -267,9 +267,9 @@ export class TrollboxClient {
      * @throws {NotConnectedError} If the client is already disconnected from the Trollbox.
      */
     disconnect() {
-        if (!this.socket) throw new NotConnectedError('Client is already disconnected');
+        if (!this.is_connected()) throw new NotConnectedError('Client is already disconnected');
 
-        this.socket.disconnect();
+        this.socket?.disconnect();
         this.joined = false;
     }
 
@@ -292,10 +292,9 @@ export class TrollboxClient {
      * join('sus', '', '', '')
      */
     join(pseudo: string, color: string, style: string, pass: string) {
-        if (!this.socket) throw new NotConnectedError('Client is not connected');
-        if (this.socket.disconnected) throw new NotConnectedError('Client is not connected');
+        if (!this.is_connected()) throw new NotConnectedError('Client is not connected');
 
-        this.socket.emit('user joined', pseudo, color, style, pass, () => {
+        this.socket?.emit('user joined', pseudo, color, style, pass, () => {
             console.log("hi");
         });
         this.joined = true;
@@ -314,10 +313,9 @@ export class TrollboxClient {
      * send_message('hello')
      */
     send_message(message: string) {
-        if (!this.socket) throw new NotConnectedError('Client is not connected');
-        if (this.socket.disconnected) throw new NotConnectedError('Client is not connected');
-        if (!this.joined) throw new NotJoinedError('Client have not joined');
+        if (!this.is_connected()) throw new NotConnectedError('Client is not connected');
+        if (!this.is_joined()) throw new NotJoinedError('Client have not joined');
 
-        this.socket.emit('message', message);
+        this.socket?.emit('message', message);
     }
 }

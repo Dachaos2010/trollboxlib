@@ -43,11 +43,10 @@ export class SocketUser {
      * @returns {boolean}
      */
     is_me(): boolean {
-        if (!this.client.socket) throw new NotConnectedError('Client is not connected');
-        if (this.client.socket.disconnected) throw new NotConnectedError('Client is not connected');
-        if (!this.client.joined) throw new NotJoinedError('Client have not joined');
+        if (!this.client.is_connected()) throw new NotConnectedError('Client is not connected');
+        if (!this.client.is_joined()) throw new NotJoinedError('Client have not joined');
 
-        return this.client.socket.id == this.client.users_manager.socket_id_by_user(this)
+        return this.client.socket?.id == this.client.users_manager.socket_id_by_user(this)
     }
 
     /**
@@ -59,9 +58,8 @@ export class SocketUser {
      * @returns {boolean}
      */
     is_king(): boolean {
-        if (!this.client.socket) throw new NotConnectedError('Client is not connected');
-        if (this.client.socket.disconnected) throw new NotConnectedError('Client is not connected');
-        if (!this.client.joined) throw new NotJoinedError('Client have not joined');
+        if (!this.client.is_connected()) throw new NotConnectedError('Client is not connected');
+        if (!this.client.is_joined()) throw new NotJoinedError('Client have not joined');
 
         return this.client.users_manager.king == this
     }
