@@ -8,13 +8,13 @@ import { Context } from '../context.js';
  * @class
  */
 export class UserNickChangeContext extends Context {
-    nick_change: SocketUserNickChange;
+    user_nick_change: SocketUserNickChange;
 
     /**
      * Creates a new instance.
      */
-    constructor(client: TrollboxClient, nick_change: SocketUserNickChange) {
+    constructor(client: TrollboxClient, user_nick_change: SocketUserNickChange) {
         super(client);
-        this.nick_change = nick_change;
+        this.user_nick_change = user_nick_change;
     }
 }
