@@ -52,7 +52,7 @@ function main() {
 
     client.handlers_manager.register_handler(
         new ConnectHandler(
-            async (context: Context) => {
+            async (context: ConnectContext) => {
                 client.join('loggerbot', 'white', '', '');
             }
         )
@@ -60,7 +60,7 @@ function main() {
 
     client.handlers_manager.register_handler(
         new MessageHandler(
-            async (context: Context) => {
+            async (context: MessageContext) => {
                 if (!context.message) return;
 
                 console.log('[' + context.message.author.nick.pseudo + '] ' + context.message.msg);
@@ -70,7 +70,7 @@ function main() {
 
     client.handlers_manager.register_handler(
         new UserLeftHandler(
-            async (context: Context) => {
+            async (context: UserLeftContext) => {
                 if (!context.user) return;
 
                 console.log(context.user.nick.pseudo + ' left teh   trollbox');
@@ -80,7 +80,7 @@ function main() {
 
     client.handlers_manager.register_handler(
         new UserJoinedHandler(
-            async (context: Context) => {
+            async (context: UserJoinedContext) => {
                 if (!context.user) return;
 
                 console.log(context.user.nick.pseudo + ' joined teh trollbox');
@@ -90,7 +90,7 @@ function main() {
 
     client.handlers_manager.register_handler(
         new UserNickChangeHandler(
-            async (context: Context) => {
+            async (context: UserNickChangeContext) => {
                 if (!context.user_nick_change) return;
 
                 console.log(context.user_nick_change.prev_nick.pseudo + ' is now known as ' + context.user_nick_change.new_user.nick.pseudo);
