@@ -286,8 +286,14 @@ export class TrollboxClient {
         this.joined = false;
     }
 
+    /**
+     * Join Trollbox. Calling this function again (without disconnecting) will change your pseudo and color.
+     * 
+     * @param {string} pseudo Pseudo (aka. nickname) of your client.
+     * 
+     * @throws {NotConnectedError} If the client is not connected to the Trollbox.
+     */
     join(pseudo: string): void;
-    join(pseudo: string, color: string): void;
 
     /**
      * Join Trollbox. Calling this function again (without disconnecting) will change your pseudo and color.
@@ -296,18 +302,12 @@ export class TrollboxClient {
      * @param {string?} color Color of the pseudo. Can be a named-color from CSS (`white`) or hex (`#FFFFFF`). Color will not change (or will be set to `white` on first call) if empty.
      * 
      * @throws {NotConnectedError} If the client is not connected to the Trollbox.
-     * 
-     * @example
-     * // join trollbox with 'amogus' pseudo and orange color
-     * join('amogus', 'orange')
-     * 
-     * @example
-     * // join trollbox with 'sus' pseudo
-     * join('sus')
      */
+    join(pseudo: string, color: string): void;
+    
     join(pseudo: string, color?: string) {
         if (!this.is_connected()) throw new NotConnectedError('Client is not connected');
-
+        
         this.socket?.emit('user joined', pseudo, color ?? this.color, '', '');
         this.joined = true;
         this.pseudo = pseudo;
