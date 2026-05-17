@@ -61,15 +61,7 @@ import {
 function main() {
     let client = new TrollboxClient();
 
-    client.connect();
-
-    client.handlers_manager.register_handler(
-        new ConnectHandler(
-            async (context: ConnectContext) => {
-                client.join('loggerbot', 'white', '', '');
-            }
-        )
-    );
+    client.connect('loggerbot', 'white');
 
     client.handlers_manager.register_handler(
         new MessageHandler(
