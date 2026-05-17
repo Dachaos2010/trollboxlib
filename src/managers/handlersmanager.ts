@@ -10,7 +10,7 @@ export class HandlersManager {
      * 
      * @type {Handler<Context>[]}
      */
-    handlers: Handler<Context>[] = [];
+    handlers: any[] = [];
 
     constructor() {}
 
@@ -19,7 +19,7 @@ export class HandlersManager {
      * 
      * @param {Handler} handler Handler to register.
      */
-    register_handler(handler: Handler<Context>) {
+    register_handler(handler: any) {
         this.handlers.push(handler);
     }
 
@@ -29,8 +29,8 @@ export class HandlersManager {
      * @param {string} name Handler name.
      * @param {Context} context Execution context.
      */
-    async call(name: string, context: Context) {
-        this.handlers.forEach(async (handler: Handler<Context>) => {
+    async call(name: string, context: any) {
+        this.handlers.forEach(async (handler: any) => {
             if (handler.name == name) await handler.callback(context);
         });
     }
