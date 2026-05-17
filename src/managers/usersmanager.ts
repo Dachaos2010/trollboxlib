@@ -65,7 +65,7 @@ export class UsersManager {
      * @returns {string | null}
      */
     socket_id_by_user(user: SocketUser): string | null {
-        return Object.keys(this.users).find((x) => this.by_socket_id(x)?.home == user.home) ?? null;
+        return Object.keys(this.users).find((x) => this.by_socket_id(x)?.is(user)) ?? null;
     }
 
     /**

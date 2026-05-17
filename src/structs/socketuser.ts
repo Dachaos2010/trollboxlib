@@ -42,7 +42,7 @@ export class SocketUser {
     is_me(): boolean {
         if (!this.client.socket) return false;
 
-        return this.client.users_manager.socket_id_by_user(this) == this.client.socket?.id
+        return this.client.users_manager.get_me()?.is(this) ?? false;
     }
 
     /**
@@ -51,8 +51,20 @@ export class SocketUser {
      * @returns {boolean}
      */
     is_king(): boolean {
-        if (!this.client.users_manager.king) return false;
+        return this.client.users_manager.king?.is(this) ?? false;
+    }
 
-        return this.client.users_manager.socket_id_by_user(this.client.users_manager.king) == this.client.socket?.id
+    /**
+     * Compare 2 users by comparing their homes and nicks.
+     * 
+     * @param {SocketUser} other The other user to compare
+     * @returns {boolean}
+     */
+    is(other: SocketUser): boolean {
+        return (
+            this.home == other.home &&
+            this.nick.pseudo == other.nick.pseudo &&
+            this.nick.color == other.nick.color
+        )
     }
 }
