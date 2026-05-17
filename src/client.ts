@@ -144,7 +144,8 @@ export class TrollboxClient {
                         ),
                         schema.data.home
                     ),
-                    decode(schema.data.msg)
+                    decode(schema.data.msg),
+                    schema.data.date
                 );
 
                 await this.handlers_manager.call(

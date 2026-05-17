@@ -26,9 +26,17 @@ export class SocketMessage {
      */
     msg: string;
 
-    constructor(client: TrollboxClient, author: SocketUser, msg: string) {
+    /**
+     * When the message was sent?
+     * 
+     * @type {Date}
+     */
+    sent: Date;
+
+    constructor(client: TrollboxClient, author: SocketUser, msg: string, sent: Date) {
         this.client = client;
         this.author = author;
         this.msg = msg;
+        this.sent = sent;
     }
 }
