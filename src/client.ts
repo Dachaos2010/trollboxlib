@@ -292,8 +292,8 @@ export class TrollboxClient {
      * 
      * @param {string} pseudo Pseudo (aka. nickname) of your client.
      * @param {string} color Color of the pseudo. Can be a named-color from CSS (`white`) or hex (`#FFFFFF`). Random color will be chosen if string is empty.
-     * @param {string} style CSS style of pseudo.
-     * @param {string} pass I dunno what is this.
+     * @param {string} style CSS style of pseudo. Undocumented. Practically does nothing and never used in Windows93's Trollbox client.
+     * @param {string} pass Password (?). Undocumented. Practically does nothing and never used in Windows93's Trollbox client.
      * 
      * @throws {NotConnectedError} If the client is not connected to the Trollbox.
      * 
