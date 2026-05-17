@@ -1,0 +1,49 @@
+{
+  "name": "trollboxlib",
+  "version": "1.0.0",
+  "description": "a library for creating bots on trollbox",
+  "license": "MIT",
+  "author": "Dachaos",
+  "type": "module",
+  "funding": [
+    {
+      "type": "bitcoin",
+      "url": "bitcoin:BC1QE4HD5WNKWKMF065PYTQMZ8P5NDDVDQD7UAHDVH?label=trollboxlib"
+    },
+    {
+      "type": "monero",
+      "url": "monero:89ZT8KQrcRVU1e9JufrMbALA59Gz6ycncPHB9jSe2c95NXD9sLwjoNiPMjgJvh3tWzjQmkPS1kZYuTuvfFdnAH9oThv25oT"
+    }
+  ],
+  "keywords": [
+    "trollbox",
+    "tbbot",
+    "bot"
+  ],
+  "readme": "README.md",
+  "module": "lib/src/index.mjs",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.js",
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "docs": "typedoc ./src/**/*.ts",
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@types/he": "^1.2.3",
+    "@types/socket.io-client": "^1.4.36",
+    "he": "^1.2.0",
+    "socket.io-client": "^2.5.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  }
+}
