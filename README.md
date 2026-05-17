@@ -43,7 +43,20 @@ all donations are appreciated. thank you for supporting the project!
 this is an example of library usage. it creates a logger bot that prints all messages and events to console.
 
 ```
-import { TrollboxClient, Context, MessageHandler, UserJoinedHandler, UserLeftHandler, UserNickChangeHandler, ConnectHandler } from 'trollboxlib';
+import {
+    TrollboxClient,
+    Context,
+    MessageHandler,
+    UserJoinedHandler,
+    UserLeftHandler,
+    UserNickChangeHandler,
+    ConnectHandler,
+    ConnectContext,
+    MessageContext,
+    UserLeftContext,
+    UserJoinedContext,
+    UserNickChangeContext
+} from 'trollboxlib';
 
 function main() {
     let client = new TrollboxClient();
